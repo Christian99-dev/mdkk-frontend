@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
+import { device } from "../theme/breakpoints"
 
 const Footer = () => {
   return (
@@ -56,8 +57,28 @@ const FooterStyle = styled.footer`
       &.right {
         padding-left: var(--space-xs);
       }
-      &:hover{
-        color: rgba(255,255,255,0.5)
+      &:hover {
+        color: rgba(255, 255, 255, 0.5);
+      }
+    }
+  }
+
+  @media ${device.tablet} {
+    justify-content: unset;
+    flex-direction: column;
+    gap: var(--space-xxl);
+
+    .links {
+      flex-direction: column;
+      gap: var(--space-lg);
+      a {
+        text-align: center;
+        &.left,
+        &.middle,
+        &.right {
+          padding: unset;
+          border: unset;
+        }
       }
     }
   }

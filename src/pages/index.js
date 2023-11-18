@@ -4,6 +4,7 @@ import Hero from "../sections/Hero"
 import { SeoHeader } from "../components/SeoHeader"
 import Work from "../sections/Work"
 import Footer from "../sections/Footer"
+import AboutUs from "../sections/AboutUs"
 
 const IndexPage = () => {
   return (
@@ -12,6 +13,7 @@ const IndexPage = () => {
       <main>
         <Hero />
         <Work />
+        <AboutUs />
       </main>
       <Footer />
     </Root>

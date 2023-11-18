@@ -4,6 +4,7 @@ import Button from "../components/Button"
 import { device } from "../theme/breakpoints"
 
 const Hero = () => {
+
   return (
     <HeroStyle>
       <div className="filter" />
@@ -48,7 +49,7 @@ export default Hero
 
 const HeroStyle = styled.section`
   position: relative;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   overflow: hidden;
 

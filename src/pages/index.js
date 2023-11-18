@@ -1,6 +1,6 @@
 import React from "react"
 import Root from "../components/Root"
-import Hero from "../components/Hero"
+import Hero from "../sections/Hero"
 import { SeoHeader } from "../components/SeoHeader"
 
 const IndexPage = () => {

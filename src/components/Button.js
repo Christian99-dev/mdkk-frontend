@@ -19,8 +19,6 @@ export default Button
 
 const ButtonStyle = styled.button`
   cursor: pointer;
-
-  transition: all 0.05s ease-out;
   font-size: var(--fs-3);
   font-weight: 500;
   background-color: transparent;
@@ -35,7 +33,6 @@ const ButtonStyle = styled.button`
   &:hover {
     background-color: black;
     color: white;
-    transition: all 0.1s ease-in;
     border-color: white;
     &.dark {
       background-color: transparent;

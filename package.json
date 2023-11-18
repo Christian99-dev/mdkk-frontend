@@ -5,18 +5,21 @@
   "version": "0.1.0",
   "author": "Christian",
   "dependencies": {
+    "babel-plugin-styled-components": "^2.1.4",
     "gatsby": "^5.12.4",
     "gatsby-plugin-image": "^3.12.0",
-    "gatsby-plugin-sharp": "^5.12.0",
-    "gatsby-transformer-sharp": "^5.12.0",
     "gatsby-plugin-offline": "^6.12.3",
+    "gatsby-plugin-preload-fonts": "^4.12.0",
+    "gatsby-plugin-sharp": "^5.12.0",
+    "gatsby-plugin-styled-components": "^6.12.0",
     "gatsby-plugin-zopfli": "^2.0.0",
     "gatsby-source-strapi": "^3.3.1",
-    "react-scroll": "^1.8.9",
-    "styled-components": "^6.0.7",
-    "swiper": "^8.4.7",
+    "gatsby-transformer-sharp": "^5.12.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-scroll": "^1.8.9",
+    "styled-components": "^6.1.1",
+    "swiper": "^8.4.7"
   },
   "devDependencies": {
     "prettier": "^2.8.8"

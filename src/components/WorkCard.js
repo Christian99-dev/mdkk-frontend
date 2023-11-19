@@ -1,10 +1,16 @@
 import React from "react"
 import styled from "styled-components"
+import Parallax from "./Parallax"
+import { device } from "../theme/breakpoints"
 
 const WorkCard = ({ data: { text, img } }) => {
   return (
     <WorkCardStyle>
-      <img className="img" src={img} alt="img" />
+      <div className="image-wrapper">
+        <Parallax strength={199}>
+          <img className="img" src={img} alt="img" />
+        </Parallax>
+      </div>
       <p>{text}</p>
     </WorkCardStyle>
   )
@@ -18,10 +24,13 @@ const WorkCardStyle = styled.div`
   height: 100%;
   width: 100%;
 
-  img {
+  .image-wrapper {
+    position: relative;
     width: 100%;
     height: 60vh; // bestimmt höhe von WorkCard
-    object-fit: cover;
+    img {
+      object-fit: cover;
+    }
   }
 
   p {
@@ -35,5 +44,13 @@ const WorkCardStyle = styled.div`
     font-weight: 500;
     line-height: 1.7;
     text-align: left;
-  } 
+  }
+
+  @media ${device.tablet_sm} {
+    p{
+      text-align: center;
+      padding-bottom: var(--space-md);
+      padding-right: 0;
+    }
+  }
 `

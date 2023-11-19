@@ -7,6 +7,7 @@ import { Navigation, Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import { device } from "../theme/breakpoints"
 
 const data = [
   {
@@ -24,7 +25,7 @@ const data = [
 ]
 
 const Work = () => {
-  const { mobile, tablet_sm, tablet, laptop, desktop, desktopXL } = useDevice()
+  const { mobile, tablet_sm, tablet, laptop } = useDevice()
 
   let slidesPerView = 3
 
@@ -74,19 +75,9 @@ const WorkStyle = styled.section`
     text-align: center;
   }
 
-  .cards-row {
-    background-color: red;
-    display: flex;
-    gap: var(--space-lg);
-    padding: 0 var(--space-xxxl);
-  }
-
   .swiper {
     padding: 0 var(--space-xxxl);
     padding-bottom: var(--space-xxl);
-
-    .swiper-pagination {
-      /* top: 2px; */
-    }
   }
+
 `

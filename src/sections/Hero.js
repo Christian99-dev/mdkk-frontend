@@ -2,13 +2,15 @@ import React from "react"
 import styled from "styled-components"
 import Button from "../components/Button"
 import { device } from "../theme/breakpoints"
+import Parallax from "../components/Parallax"
 
 const Hero = () => {
-
   return (
     <HeroStyle>
       <div className="filter" />
-      <img className="background-img" src="/mock/pipe.jpg" alt="pipe" />
+      <Parallax className="parallax" strength={1000}>
+        <img className="background-img" src="/mock/pipe.jpg" alt="pipe" />
+      </Parallax>
 
       <div className="flex-container">
         <div className="wrapper">
@@ -49,7 +51,6 @@ export default Hero
 
 const HeroStyle = styled.section`
   position: relative;
-  /* width: 100vw; */
   height: 100vh;
   overflow: hidden;
 
@@ -61,12 +62,12 @@ const HeroStyle = styled.section`
     background-color: rgba(255, 255, 255, 0.8);
   }
 
-  .background-img {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  .parallax {
     z-index: -10;
+    .background-img {
+      object-fit: cover;
+      z-index: -10;
+    }
   }
 
   .flex-container {

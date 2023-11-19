@@ -36,7 +36,7 @@ export default AboutUs
 const AboutUsStyle = styled.section`
   height: 100vh;
   display: flex;
-  padding: var(--space-xxxl) var(--space-xxxl);
+  padding: var(--space-xxl) var(--space-xxxl);
 
   img {
     width: 50%;

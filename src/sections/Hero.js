@@ -170,4 +170,10 @@ const HeroStyle = styled.section`
       /* flex-direction: column; */
     }
   }
+
+  @media ${device.mobile} {
+    .buttons{
+      flex-direction: column;
+    }
+  }
 `

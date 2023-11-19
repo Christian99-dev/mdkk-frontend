@@ -34,8 +34,8 @@ const Hero = () => {
                 <a href="tel:1234/2345">01514/549637</a>
               </div>
               <div className="buttons">
-                <Button text="Meine arbeit" onClick={() => {}} />
-                <Button text="Über mich" onClick={() => {}} theme="dark" />
+                <Button to="work" text="Meine arbeit" onClick={() => {}} />
+                <Button to="aboutus" text="Über mich" onClick={() => {}} theme="dark" />
               </div>
             </div>
 

@@ -31,7 +31,7 @@ const Work = () => {
   if (laptop || tablet || tablet) slidesPerView = 2
   if (tablet_sm || mobile) slidesPerView = 1
   return (
-    <WorkStyle>
+    <WorkStyle id="work">
       <h2>Meine Arbeit</h2>
       <p className="sub">Preis</p>
 

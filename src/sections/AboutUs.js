@@ -4,7 +4,7 @@ import { device } from "../theme/breakpoints"
 
 const AboutUs = () => {
   return (
-    <AboutUsStyle>
+    <AboutUsStyle id="aboutus">
       <img alt="me" src="https://images.pexels.com/photos/3913982/pexels-photo-3913982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"></img>
       <div className="text-box">
         <h2>Sebastian Müller</h2>

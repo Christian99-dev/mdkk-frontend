@@ -1,7 +1,9 @@
 import React from "react"
+import { Link } from "react-scroll"
 import styled from "styled-components"
 
 const Button = ({
+  to,
   theme = "light",
   text = "button",
   onClick = () => {
@@ -9,7 +11,14 @@ const Button = ({
   },
 }) => {
   return (
-    <ButtonStyle className={theme} onClick={onClick}>
+    <ButtonStyle
+      smooth={true}
+      duration={400}
+      to={to}
+      className={theme}
+      onClick={onClick}
+      href="#"
+    >
       {text}
     </ButtonStyle>
   )
@@ -17,13 +26,15 @@ const Button = ({
 
 export default Button
 
-const ButtonStyle = styled.button`
+const ButtonStyle = styled(Link)`
   cursor: pointer;
   font-size: var(--fs-3);
   font-weight: 500;
   background-color: transparent;
   padding: var(--space-sm) var(--space-md);
   border: 4px solid black;
+  text-decoration: none;
+  color: black;
 
   &.dark {
     background-color: black;

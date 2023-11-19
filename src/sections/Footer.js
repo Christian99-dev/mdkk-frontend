@@ -66,8 +66,8 @@ const FooterStyle = styled.footer`
   @media ${device.tablet} {
     justify-content: unset;
     flex-direction: column;
-    gap: var(--space-xxl);
-
+    gap: var(--space-xxxl);
+    padding: var(--space-xxxl);
     .links {
       flex-direction: column;
       gap: var(--space-lg);

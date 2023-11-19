@@ -3,6 +3,8 @@ import styled from "styled-components"
 import Button from "../components/Button"
 import { device } from "../theme/breakpoints"
 import Parallax from "../components/Parallax"
+import { Link } from "react-scroll"
+import { Fade } from "react-awesome-reveal"
 
 const Hero = () => {
   return (
@@ -35,7 +37,12 @@ const Hero = () => {
               </div>
               <div className="buttons">
                 <Button to="work" text="Meine arbeit" onClick={() => {}} />
-                <Button to="aboutus" text="Über mich" onClick={() => {}} theme="dark" />
+                <Button
+                  to="aboutus"
+                  text="Über mich"
+                  onClick={() => {}}
+                  theme="dark"
+                />
               </div>
             </div>
 
@@ -43,6 +50,18 @@ const Hero = () => {
           </div>
         </div>
       </div>
+
+      <Link
+        className="downbutton"
+        to="work"
+        href="#"
+        smooth={true}
+        duration={400}
+      >
+        <Fade direction="down">
+          <img src="/icons/arrow.svg" alt="icon" />
+        </Fade>
+      </Link>
     </HeroStyle>
   )
 }
@@ -67,6 +86,27 @@ const HeroStyle = styled.section`
     .background-img {
       object-fit: cover;
       z-index: -10;
+    }
+  }
+
+  .downbutton {
+    width: 100%;
+    bottom: 0;
+    z-index: 10;
+    position: absolute;
+    margin-bottom: var(--space-lg);
+    text-align: center;
+    cursor: pointer;
+    transition: bottom 0.2s ease-out;
+    
+    img{
+      transform: rotate(90deg);
+      height: var(--space-xxl);
+    }
+
+    &:hover {
+      bottom: var(--space-sm);
+      transition: bottom 0.2s ease-in;
     }
   }
 
@@ -172,7 +212,7 @@ const HeroStyle = styled.section`
   }
 
   @media ${device.mobile} {
-    .buttons{
+    .buttons {
       flex-direction: column;
     }
   }

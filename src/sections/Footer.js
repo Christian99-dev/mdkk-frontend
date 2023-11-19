@@ -6,15 +6,15 @@ import { device } from "../theme/breakpoints"
 const Footer = () => {
   return (
     <FooterStyle>
-      <p>machdirkeinkopf.de</p>
+      <Link to="/">machdirkeinkopf.de</Link>
       <div className="links">
-        <Link className="left" to="impressum">
+        <Link className="left" to="/impressum">
           Impressum
         </Link>
-        <Link className="middle" to="agb">
+        <Link className="middle" to="/agb">
           AGB
         </Link>
-        <Link className="right" to="datenschutz">
+        <Link className="right" to="/datenschutz">
           Datenschutzerklärung
         </Link>
       </div>
@@ -32,8 +32,13 @@ const FooterStyle = styled.footer`
   align-items: center;
   justify-content: space-between;
 
-  p {
+  a {
     font-size: var(--fs-3);
+    color: white;
+    text-decoration: none;
+    &:hover {
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 
   .links {

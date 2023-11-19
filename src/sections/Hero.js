@@ -18,35 +18,44 @@ const Hero = () => {
         <div className="wrapper">
           <div className="text-box">
             <div>
-              <h1>
-                Rohr Dicht ?<br />
-                Mach dir kein Kopf!
-              </h1>
-              <p>
-                Abwasser-Probleme? Verzweifeln Sie nicht bei Rohrverstopfungen!
-                Unser zuverlässiger Rohrreinigungsdienst bietet schnelle Hilfe
-                in Notfällen, um Ihre Leitungen effizient zu befreien.
-              </p>
-              <div className="whatsapp">
-                <img
-                  className="icon"
-                  src="/icons/whatsapp.svg"
-                  alt="whatsapp"
-                ></img>
-                <a href="tel:1234/2345">01514/549637</a>
-              </div>
-              <div className="buttons">
-                <Button to="work" text="Meine arbeit" onClick={() => {}} />
-                <Button
-                  to="aboutus"
-                  text="Über mich"
-                  onClick={() => {}}
-                  theme="dark"
-                />
-              </div>
-            </div>
+              <Fade direction="left" triggerOnce={true}>
+                <h1>
+                  Rohr Dicht ?<br />
+                  Mach dir kein Kopf!
+                </h1>
+              </Fade>
+              <Fade delay={100} triggerOnce={true}>
+                <p>
+                  Abwasser-Probleme? Verzweifeln Sie nicht bei
+                  Rohrverstopfungen! Unser zuverlässiger Rohrreinigungsdienst
+                  bietet schnelle Hilfe in Notfällen, um Ihre Leitungen
+                  effizient zu befreien.
+                </p>
+              </Fade>
 
-            <img className="logo" src="/mock/logo.png" alt="logo"></img>
+              <Fade delay={150} triggerOnce={true}>
+                <div className="whatsapp">
+                  <img
+                    className="icon"
+                    src="/icons/whatsapp.svg"
+                    alt="whatsapp"
+                  ></img>
+                  <a href="tel:1234/2345">01514/549637</a>
+                </div>
+                <div className="buttons">
+                  <Button to="work" text="Meine arbeit" onClick={() => {}} />
+                  <Button
+                    to="aboutus"
+                    text="Über mich"
+                    onClick={() => {}}
+                    theme="dark"
+                  />
+                </div>
+              </Fade>
+            </div>
+            <Fade triggerOnce={true}>
+              <img className="logo" src="/mock/logo.png" alt="logo"></img>
+            </Fade>
           </div>
         </div>
       </div>
@@ -98,8 +107,8 @@ const HeroStyle = styled.section`
     text-align: center;
     cursor: pointer;
     transition: bottom 0.2s ease-out;
-    
-    img{
+
+    img {
       transform: rotate(90deg);
       height: var(--space-xxl);
     }

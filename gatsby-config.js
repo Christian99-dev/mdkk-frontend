@@ -3,6 +3,9 @@
  *
  * See: https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
 /**
  * @type {import('gatsby').GatsbyConfig}
@@ -12,6 +15,28 @@ module.exports = {
     "gatsby-plugin-offline",
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
+    {
+      resolve: "gatsby-source-strapi",
+      options: {
+        apiURL: process.env.GATSBY_BACKEND_URL,
+        accessToken: process.env.GATSBY_BACKEND_API_TOKEN,
+        singleTypes: [
+          "about-me",
+          "arbeit",
+          "footer",
+          "global",
+          "rechtliches",
+          "seo",
+          "willkommen",
+          {
+            singularName: "global",
+            queryParams: {
+              populate: ["Logo"],
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: `gatsby-plugin-styled-components`,
       options: {

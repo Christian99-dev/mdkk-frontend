@@ -5,8 +5,34 @@ import { device } from "../theme/breakpoints"
 import Parallax from "../components/Parallax"
 import { Link } from "react-scroll"
 import { Fade } from "react-awesome-reveal"
+import { graphql, useStaticQuery } from "gatsby"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Hero = () => {
+  const {
+    strapiWillkommen: { buttonLinks, buttonRechts, nummer, text, titel },
+    strapiGlobal: { logo },
+  } = useStaticQuery(graphql`
+    query MyQuery {
+      strapiWillkommen {
+        buttonLinks: ButtonLinks
+        buttonRechts: ButtonRechts
+        nummer: Nummer
+        text: Text
+        titel: Titel
+      }
+      strapiGlobal {
+        id
+        logo: Logo {
+          localFile {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
+      }
+    }
+  `)
   return (
     <HeroStyle>
       <div className="filter" />
@@ -19,18 +45,10 @@ const Hero = () => {
           <div className="text-box">
             <div>
               <Fade direction="left" triggerOnce={true}>
-                <h1>
-                  Rohr Dicht ?<br />
-                  Mach dir kein Kopf!
-                </h1>
+                <h1>{titel}</h1>
               </Fade>
               <Fade delay={100} triggerOnce={true}>
-                <p>
-                  Abwasser-Probleme? Verzweifeln Sie nicht bei
-                  Rohrverstopfungen! Unser zuverlässiger Rohrreinigungsdienst
-                  bietet schnelle Hilfe in Notfällen, um Ihre Leitungen
-                  effizient zu befreien.
-                </p>
+                <p>{text}</p>
               </Fade>
 
               <Fade delay={150} triggerOnce={true}>
@@ -40,13 +58,13 @@ const Hero = () => {
                     src="/icons/whatsapp.svg"
                     alt="whatsapp"
                   ></img>
-                  <a href="tel:1234/2345">01514/549637</a>
+                  <a href="tel:1234/2345">{nummer}</a>
                 </div>
                 <div className="buttons">
-                  <Button to="work" text="Meine arbeit" onClick={() => {}} />
+                  <Button to="work" text={buttonLinks} onClick={() => {}} />
                   <Button
                     to="aboutus"
-                    text="Über mich"
+                    text={buttonRechts}
                     onClick={() => {}}
                     theme="dark"
                   />
@@ -54,7 +72,11 @@ const Hero = () => {
               </Fade>
             </div>
             <Fade triggerOnce={true}>
-              <img className="logo" src="/mock/logo.png" alt="logo"></img>
+              <GatsbyImage
+                image={getImage(logo.localFile)}
+                alt={logo.alternativeText}
+                className="logo"
+              />
             </Fade>
           </div>
         </div>
@@ -169,6 +191,7 @@ const HeroStyle = styled.section`
           top: 0;
           position: absolute;
           height: 100%;
+          width: max-content;
         }
       }
 

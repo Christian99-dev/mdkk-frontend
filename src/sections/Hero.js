@@ -192,6 +192,10 @@ const HeroStyle = styled.section`
           position: absolute;
           height: 100%;
           width: max-content;
+          img {
+            object-fit: contain !important;
+            object-position: right;
+          }
         }
       }
 

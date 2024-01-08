@@ -7,6 +7,7 @@ import { Navigation, Pagination } from "swiper/modules"
 import "swiper/css"
 import "swiper/css/navigation"
 import "swiper/css/pagination"
+import { graphql, useStaticQuery } from "gatsby"
 
 const data = [
   {
@@ -24,6 +25,27 @@ const data = [
 ]
 
 const Work = () => {
+  const {
+    strapiArbeit: { titel, untertitel, taetigkeiten },
+  } = useStaticQuery(graphql`
+    query {
+      strapiArbeit {
+        titel: Titel
+        untertitel: Untertitel
+        taetigkeiten: Taetigkeiten {
+          beschreibung: Beschreibung
+          bild: Bild {
+            alternativeText
+            localFile {
+              childImageSharp {
+                gatsbyImageData(placeholder: BLURRED)
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
   const { mobile, tablet_sm, tablet, laptop } = useDevice()
 
   let slidesPerView = 3
@@ -32,8 +54,8 @@ const Work = () => {
   if (tablet_sm || mobile) slidesPerView = 1
   return (
     <WorkStyle id="work">
-      <h2>Meine Arbeit</h2>
-      <p className="sub">Preis</p>
+      <h2>{titel}</h2>
+      <p className="sub">{untertitel}</p>
 
       <Swiper
         modules={[Navigation, Pagination]}
@@ -42,15 +64,11 @@ const Work = () => {
         spaceBetween={50}
         slidesPerView={slidesPerView}
       >
-        <SwiperSlide>
-          <WorkCard data={data[0]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <WorkCard data={data[1]} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <WorkCard data={data[2]} />
-        </SwiperSlide>
+        {taetigkeiten.map((taetigkeit, index) => (
+          <SwiperSlide key={index}>
+            <WorkCard data={taetigkeit} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </WorkStyle>
   )
@@ -78,5 +96,4 @@ const WorkStyle = styled.section`
     padding: 0 var(--space-xxxl);
     padding-bottom: var(--space-xxl);
   }
-
 `

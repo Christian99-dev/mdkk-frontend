@@ -2,16 +2,21 @@ import React from "react"
 import styled from "styled-components"
 import Parallax from "./Parallax"
 import { device } from "../theme/breakpoints"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-const WorkCard = ({ data: { text, img } }) => {
+const WorkCard = ({ data: { beschreibung, bild } }) => {
   return (
     <WorkCardStyle>
       <div className="image-wrapper">
         <Parallax strength={199}>
-          <img className="img" src={img} alt="img" />
+          <GatsbyImage
+            image={getImage(bild.localFile)}
+            alt={bild.alternativeText}
+            className="img"
+          />
         </Parallax>
       </div>
-      <p>{text}</p>
+      <p>{beschreibung}</p>
     </WorkCardStyle>
   )
 }
@@ -47,7 +52,7 @@ const WorkCardStyle = styled.div`
   }
 
   @media ${device.tablet_sm} {
-    p{
+    p {
       text-align: center;
       padding-bottom: var(--space-md);
       padding-right: 0;

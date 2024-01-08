@@ -1,12 +1,21 @@
-import { Link } from "gatsby"
+import { Link, graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { device } from "../theme/breakpoints"
 
 const Footer = () => {
+  const {
+    strapiFooter: { links },
+  } = useStaticQuery(graphql`
+    query {
+      strapiFooter {
+        links :Links
+      }
+    }
+  `)
   return (
     <FooterStyle>
-      <Link to="/">machdirkeinkopf.de</Link>
+      <Link to="/">{links}</Link>
       <div className="links">
         <Link className="left" to="/impressum">
           Impressum

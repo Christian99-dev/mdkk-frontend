@@ -1,49 +1,53 @@
-// import { graphql, useStaticQuery } from "gatsby";
-import React from "react";
-// import { addMediaLink } from "../services/Utils/addMediaLink";
+import { graphql, useStaticQuery } from "gatsby"
+import React from "react"
 
 export const SeoHeader = ({ endung, children }) => {
-//   const { strapiSeo } = useStaticQuery(graphql`
-//     query {
-//       strapiSeo {
-//         webseitenTitel: WebseitenTitel
-//         webseitenUrl: WebseitenUrl
-//         datenschutz: Datenschutzerklaerung {
-//           desc: SeitenBeschreibung
-//           title: SeitenTitel
-//         }
-//         index: Homepage {
-//           desc: SeitenBeschreibung
-//           title: SeitenTitel
-//         }
-//         impressum: Impressum {
-//           desc: SeitenBeschreibung
-//           title: SeitenTitel
-//         }
-//         favicon {
-//           formats {
-//             small {
-//               url
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
+  const {
+    strapiSeo,
+    strapiSeo: { webseitenTitel, webseitenUrl, favicon },
+  } = useStaticQuery(graphql`
+    {
+      strapiSeo {
+        webseitenTitel: WebseitenTitel
+        webseitenUrl: WebseitenUrl
+        favicon {
+          formats {
+            small {
+              url
+            }
+          }
+        }
+        agb: Agb {
+          desc: SeitenBeschreibung
+          title: SeitenTitel
+        }
+        datenschutz: Datenschutzerklaerung {
+          desc: SeitenBeschreibung
+          title: SeitenTitel
+        }
+        index: Homepage {
+          desc: SeitenBeschreibung
+          title: SeitenTitel
+        }
+        impressum: Impressum {
+          desc: SeitenBeschreibung
+          title: SeitenTitel
+        }
+      }
+    }
+  `)
 
-//   const { webseitenUrl, webseitenTitel, favicon } = strapiSeo;
-//   const can = endung !== "index" ? webseitenUrl + "/" + endung : webseitenUrl
-
+  const can = endung !== "index" ? webseitenUrl + "/" + endung : webseitenUrl
   return (
     <>
-      {/* <title>
+      <title>
         {strapiSeo[endung].title} | {webseitenTitel}
       </title>
-      <meta name="description" content={strapiSeo[endung].desc} /> */}
+      <meta name="description" content={strapiSeo[endung].desc} />
       <link rel="stylesheet" type="text/css" href="/fonts/fontface.css" />
-      {/* <link rel="icon" href={addMediaLink(favicon.formats.small.url)} />
-      <link rel="canonical" href={can} /> */}
+      <link rel="icon" href={process.env.GATSBY_BACKEND_URL + favicon.formats.small.url} />
+      <link rel="canonical" href={can} />
       {children}
     </>
-  );
-};
+  )
+}

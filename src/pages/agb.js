@@ -1,11 +1,21 @@
 import React from "react"
 import PolicyPage from "../templates/PolicyPage"
 import { SeoHeader } from "../components/SeoHeader"
+import { graphql, useStaticQuery } from "gatsby"
 
-const agb = () => {
-  return <PolicyPage text="AGB" />
+const AgbPage = () => {
+  const {
+    strapiRechtliches: { agb },
+  } = useStaticQuery(graphql`
+    query {
+      strapiRechtliches {
+        agb: AGB
+      }
+    }
+  `)
+  return <PolicyPage text={agb} />
 }
 
-export default agb
+export default AgbPage
 
 export const Head = () => <SeoHeader endung="agb" />

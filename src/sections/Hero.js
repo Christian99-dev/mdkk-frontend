@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Button from "../components/Button"
-import { device } from "../theme/breakpoints"
+import { device, size } from "../theme/breakpoints"
 import Parallax from "../components/Parallax"
 import { Link } from "react-scroll"
 import { Fade } from "react-awesome-reveal"
@@ -10,7 +10,14 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Hero = () => {
   const {
-    strapiWillkommen: { buttonLinks, buttonRechts, nummer, text, titel },
+    strapiWillkommen: {
+      buttonLinks,
+      buttonRechts,
+      nummer,
+      text,
+      titel,
+      hintergrund,
+    },
     strapiGlobal: { logo },
   } = useStaticQuery(graphql`
     query MyQuery {
@@ -20,10 +27,19 @@ const Hero = () => {
         nummer: Nummer
         text: Text
         titel: Titel
+        hintergrund: Hintergrund {
+          alternativeText
+          localFile {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED)
+            }
+          }
+        }
       }
       strapiGlobal {
         id
         logo: Logo {
+          alternativeText
           localFile {
             childImageSharp {
               gatsbyImageData(placeholder: BLURRED)
@@ -37,7 +53,11 @@ const Hero = () => {
     <HeroStyle>
       <div className="filter" />
       <Parallax className="parallax" strength={1000}>
-        <img className="background-img" src="/mock/pipe.jpg" alt="pipe" />
+        <GatsbyImage
+          image={getImage(hintergrund.localFile)}
+          alt={hintergrund.alternativeText}
+          className="background-img"
+        />
       </Parallax>
 
       <div className="flex-container">
@@ -58,7 +78,7 @@ const Hero = () => {
                     src="/icons/whatsapp.svg"
                     alt="whatsapp"
                   ></img>
-                  <a href="tel:1234/2345">{nummer}</a>
+                  <a href={"tel:" + nummer}>{nummer}</a>
                 </div>
                 <div className="buttons">
                   <Button to="work" text={buttonLinks} onClick={() => {}} />
@@ -187,6 +207,7 @@ const HeroStyle = styled.section`
         }
 
         .logo {
+          z-index: -1;
           right: 0;
           top: 0;
           position: absolute;
@@ -235,11 +256,15 @@ const HeroStyle = styled.section`
             justify-content: center;
           }
           .logo {
+            object-position: center center;
             margin: auto;
             height: 200px;
-            width: min-content;
+            width: auto;
             transform: unset;
             position: relative;
+            img{
+              object-position: unset;
+            }
           }
         }
       }

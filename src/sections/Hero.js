@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import Button from "../components/Button"
-import { device, size } from "../theme/breakpoints"
+import { device } from "../theme/breakpoints"
 import Parallax from "../components/Parallax"
 import { Link } from "react-scroll"
 import { Fade } from "react-awesome-reveal"

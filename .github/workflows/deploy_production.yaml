@@ -34,8 +34,8 @@ jobs:
 
     - name: 📝 Create Environment Variables
       run: |
-        echo "GATSBY_BACKEND_API_TOKEN=${{ secrets.BACKEND_API_TOKEN }}" >> .env.production
-        echo "GATSBY_BACKEND_URL=${{ secrets.BACKEND_URL }}" >> .env.production
+        echo "GATSBY_BACKEND_API_TOKEN=${{ secrets.GATSBY_BACKEND_API_TOKEN }}" >> .env.production
+        echo "GATSBY_BACKEND_URL=${{ secrets.GATSBY_BACKEND_URL }}" >> .env.production
 
     - name: 🏗️ Build Gatsby App for Production
       run: npm run build  

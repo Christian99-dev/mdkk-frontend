@@ -9,21 +9,6 @@ import "swiper/css/navigation"
 import "swiper/css/pagination"
 import { graphql, useStaticQuery } from "gatsby"
 
-const data = [
-  {
-    text: "Die Abwassertechnik spielt eine entscheidende Rolle für die Nachhaltigkeit, indem sie Abwässer effektiv reinigt und so die Umwelt vor Verschmutzung schützt.",
-    img: "/mock/pipe.jpg",
-  },
-  {
-    text: "Die Abwassertechnike Umwelt vor Verschmutzung schützt.",
-    img: "/mock/pipe.jpg",
-  },
-  {
-    text: "Die Abwassertechnik spielt eine entschgt und so die Umwelt vor Verschmutzung schützt.",
-    img: "/mock/pipe.jpg",
-  },
-]
-
 const Work = () => {
   const {
     strapiArbeit: { titel, untertitel, taetigkeiten },

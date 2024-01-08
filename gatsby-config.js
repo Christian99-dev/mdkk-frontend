@@ -21,12 +21,17 @@ module.exports = {
         apiURL: process.env.GATSBY_BACKEND_URL,
         accessToken: process.env.GATSBY_BACKEND_API_TOKEN,
         singleTypes: [
-          "about-me",
           "footer",
           "global",
           "rechtliches",
           "seo",
           "willkommen",
+          {
+            singularName: "about-me",
+            queryParams: {
+              populate: ["Bild", "Lebenslauf"],
+            },
+          },
           {
             singularName: "arbeit",
             queryParams: {

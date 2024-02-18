@@ -69,7 +69,7 @@ const AboutUsStyle = styled.section`
 
     p {
       font-weight: 300;
-      font-size: var(--fs-4);
+      font-size: var(--fs-5);
       line-height: 1.3;
     }
   }

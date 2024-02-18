@@ -4,6 +4,7 @@ import { device } from "../theme/breakpoints"
 import { Fade } from "react-awesome-reveal"
 import { graphql, useStaticQuery } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import parse from "html-react-parser"
 
 const AboutUs = () => {
   const {
@@ -49,7 +50,7 @@ const AboutUs = () => {
           </ul>
         </Fade>
         <Fade direction="right" duration={800} triggerOnce={true}>
-          <p>{text}</p>
+          <p>{parse(text)}</p>
         </Fade>
       </div>
     </AboutUsStyle>
@@ -69,18 +70,19 @@ const AboutUsStyle = styled.section`
   }
 
   .text-box {
-    padding-top: var(--space-xxxl);
-    padding-left: var(--space-xxxl);
+    padding-top: var(--space-xl);
+    padding-left: var(--space-xl);
     width: 50%;
     h2 {
       font-size: var(--fs-1);
       font-weight: 600;
       padding-bottom: var(--space-lg);
     }
+
     ul {
       padding-bottom: var(--space-lg);
       li {
-        font-size: var(--fs-3);
+        font-size: var(--fs-4);
         list-style: none;
         span {
           font-size: var(--fs-3);

@@ -8,15 +8,12 @@ import parse from "html-react-parser"
 
 const AboutUs = () => {
   const {
-    strapiAboutMe: { name, text, lebenslauf, bild },
+    strapiAboutMe: { name, text, bild },
   } = useStaticQuery(graphql`
     query {
       strapiAboutMe {
         name: Name
         text: Text
-        lebenslauf: Lebenslauf {
-          text: Text
-        }
         bild: Bild {
           alternativeText
           localFile {
@@ -38,16 +35,6 @@ const AboutUs = () => {
       <div className="text-box">
         <Fade direction="right" duration={500} triggerOnce={true}>
           <h2>{name}</h2>
-        </Fade>
-        <Fade direction="left" duration={600} triggerOnce={true}>
-          <ul>
-            {lebenslauf.map((point, index) => (
-              <li key={index}>
-                <span>•</span>
-                {point.text}
-              </li>
-            ))}
-          </ul>
         </Fade>
         <Fade direction="right" duration={800} triggerOnce={true}>
           <p>{parse(text)}</p>
@@ -73,30 +60,14 @@ const AboutUsStyle = styled.section`
     padding-top: var(--space-xl);
     padding-left: var(--space-xl);
     width: 50%;
+    
     h2 {
       font-size: var(--fs-1);
       font-weight: 600;
       padding-bottom: var(--space-lg);
     }
 
-    ul {
-      padding-bottom: var(--space-lg);
-      li {
-        font-size: var(--fs-4);
-        list-style: none;
-        span {
-          font-size: var(--fs-3);
-          margin: var(--space-sm);
-        }
-      }
-
-      :not(:last-child) {
-        padding-bottom: var(--space-sm);
-      }
-    }
     p {
-      color: rgba(0, 0, 0, 0.7);
-      font-style: italic;
       font-weight: 300;
       font-size: var(--fs-4);
       line-height: 1.3;

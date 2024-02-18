@@ -162,6 +162,7 @@ const HeroStyle = styled.section`
   }
 
   .flex-container {
+    z-index: -11;
     display: flex;
     height: 100%;
     align-items: center;
@@ -207,7 +208,7 @@ const HeroStyle = styled.section`
         }
 
         .logo {
-          z-index: -1;
+          z-index: -11;
           right: 0;
           top: 0;
           position: absolute;
